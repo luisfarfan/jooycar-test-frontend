@@ -10,10 +10,10 @@ import { registerPlugins } from '@/plugins'
 // Components
 import App from './App.vue'
 
+import './index.scss'
+
 // Composables
 import { createApp } from 'vue'
-
-import './styles/settings.scss'
 
 const app = createApp(App)
 

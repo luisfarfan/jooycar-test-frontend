@@ -36,7 +36,7 @@ const handleAction = (item: Trip) => {
       </tr>
       </thead>
       <tbody>
-      <tr v-for="(item, index) in props.items" :key="index" class="hover:bg-blue-200">
+      <tr v-for="(item, index) in props.items" :key="index" v-memo="['id']" class="hover:bg-blue-200">
         <td class="px-6 py-4 whitespace-no-wrap border-b">
           {{ new Date(item.start.time).toLocaleString() }}
           <br>
