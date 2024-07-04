@@ -1,8 +1,8 @@
 <template>
   <TripContainer>
     <template #defaultTab>
-      <TripFilters @updateFilters="updateFilters"/>
-      <TripList :items="trips" @selectTrip="handleSelectTrip"/>
+      <TripFilters @updateFilters="updateFilters" @createRandomTrip="createRandomTrip"/>
+      <TripList :items="tripStore.trips" @selectTrip="handleSelectTrip"/>
       <TripDetailMap :is-open="isModalOpen" :on-close="closeModal" :selected-trip="selectedItem"/>
     </template>
   </TripContainer>
@@ -16,12 +16,9 @@ import { useTripStore } from "@/stores/trip";
 import { Trip, TripQuery } from "@/models/trip.models";
 import TripContainer from "@/components/TripContainer.vue";
 
-const trips = ref<Trip[]>([]);
-
 const tripStore = useTripStore();
 const loadTrips = async (filters?: TripQuery) => {
   await tripStore.fetchTrips(filters || {});
-  trips.value = tripStore.trips;
 };
 
 const selectedItem = ref<Trip | null>(null);
@@ -42,6 +39,10 @@ const updateFilters = (filters: { start_gte: Date | null, start_lte: Date | null
 const closeModal = () => {
   selectedItem.value = null;
   isModalOpen.value = false;
+};
+
+const createRandomTrip = async () => {
+  await tripStore.createRandomTrip();
 };
 
 onMounted(loadTrips);

@@ -45,5 +45,13 @@ export const useTripStore = defineStore({
                 this.loading = false;
             }
         },
+        async createRandomTrip() {
+            try {
+                await axios.post(`${import.meta.env.VITE_API_URL}/trips/random`);
+                await this.fetchTrips({});
+            } catch (error) {
+                this.error = error instanceof Error ? error.message : 'Error';
+            }
+        }
     }
 })
