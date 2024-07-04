@@ -4,7 +4,7 @@
       <v-card-title class="headline">Mapa</v-card-title>
       <v-card-text>
         <GoogleMap
-            api-key="REMOVED_API_KEY"
+            api-key="AIzaSyDPTscAS2Mq6yNvJlQKtQk3zQ2d6VI24ao"
             style="width: 100%; height: 500px"
             :center="{
               lat: selectedTrip?.boundingBox[0].lat,
