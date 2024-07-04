@@ -37,8 +37,15 @@ const handleAction = (item: Trip) => {
       </thead>
       <tbody>
       <tr v-for="(item, index) in props.items" :key="index" class="hover:bg-blue-200">
-        <td class="px-6 py-4 whitespace-no-wrap border-b">{{ item.start.address }}</td>
-        <td class="px-6 py-4 whitespace-no-wrap border-b">{{ item.end.address}}</td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b">
+          {{ new Date(item.start.time).toLocaleString() }}
+          <br>
+          {{ item.start.address }}
+        </td>
+        <td class="px-6 py-4 whitespace-no-wrap border-b">
+          {{ new Date(item.end.time).toLocaleString() }}
+          <br>
+          {{ item.end.address}}</td>
         <td class="px-6 py-4 whitespace-no-wrap border-b">{{ item.overspeedsCount }}kms y {{ item.durationByStartAndEndTime }}</td>
         <td class="px-6 py-4 whitespace-no-wrap border-b">
           <v-btn  icon="" @click="() => handleAction(item)">
