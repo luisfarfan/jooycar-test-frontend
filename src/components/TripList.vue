@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
 import { Trip } from "@/models/trip.models";
 
 const props = defineProps({
@@ -8,8 +8,11 @@ const props = defineProps({
     required: true,
 },
 });
+
+const emits = defineEmits(['selectTrip'])
 const handleAction = (item: Trip) => {
-  console.log('Button clicked for:', item);
+  console.log('selected trip list'  , item)
+  emits('selectTrip', item);
 };
 </script>
 
@@ -38,7 +41,7 @@ const handleAction = (item: Trip) => {
         <td class="px-6 py-4 whitespace-no-wrap border-b">{{ item.end.address}}</td>
         <td class="px-6 py-4 whitespace-no-wrap border-b">{{ item.overspeedsCount }}kms y {{ item.durationByStartAndEndTime }}</td>
         <td class="px-6 py-4 whitespace-no-wrap border-b">
-          <v-btn  icon @click="() => handleAction(item)">
+          <v-btn  icon="" @click="() => handleAction(item)">
             <v-icon>mdi-chevron-right</v-icon>
           </v-btn>
         </td>
