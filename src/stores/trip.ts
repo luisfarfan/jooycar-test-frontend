@@ -29,7 +29,7 @@ export const useTripStore = defineStore({
                 loading: true,
             });
             try {
-                const response = await axios.get<Trip[]>('http://localhost:3001/api/v1/trips?limit=20&offset=0', { params: filters });
+                const response = await axios.get<Trip[]>(`${import.meta.env.VITE_API_URL}/trips?limit=20&offset=0`, { params: filters });
                 const tripsWithDuration = response.data.map(trip => ({
                     ...trip,
                     durationByStartAndEndTime: calculateDuration(trip.start.time, trip.end.time),

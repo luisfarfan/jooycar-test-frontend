@@ -49,7 +49,7 @@ const handleAction = (item: Trip) => {
         <td class="px-6 py-4 whitespace-no-wrap border-b">{{ item.overspeedsCount }}kms y {{ item.durationByStartAndEndTime }}</td>
         <td class="px-6 py-4 whitespace-no-wrap border-b">
           <v-btn  icon="" @click="() => handleAction(item)">
-            <v-icon>mdi-chevron-right</v-icon>
+            <v-icon icon="mdi-chevron-right"></v-icon>
           </v-btn>
         </td>
       </tr>
